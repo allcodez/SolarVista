@@ -82,146 +82,99 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const marqueeTrack = document.getElementById('marquee-track');
+  const marqueeContainer = document.getElementById('marquee-container');
+  const pausePlayButton = document.getElementById('pause-play');
+  const slowerButton = document.getElementById('slower');
+  const fasterButton = document.getElementById('faster');
+  const reverseButton = document.getElementById('reverse');
 
+  // Clone the items for seamless looping
+  const originalItems = marqueeTrack.innerHTML;
+  marqueeTrack.innerHTML = originalItems + originalItems;
 
+  // Variables to control animation
+  let isPaused = false;
+  let speed = 20; // Default speed in seconds
+  let direction = 1; // 1 for forward, -1 for reverse
 
-document.addEventListener('DOMContentLoaded', function () {
-  const benefitsWrapper = document.querySelector('.benefits-wrapper');
-  const cards = document.querySelectorAll('.benefit-card');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const dotsContainer = document.querySelector('.dots-container');
+  // Function to update the animation
+  function updateAnimation() {
+      // Remove existing animation
+      marqueeTrack.style.animation = 'none';
 
-  let currentIndex = 0;
-  let startX, moveX;
-  let isMobile = window.innerWidth <= 768;
+      // Force reflow
+      void marqueeTrack.offsetWidth;
 
-  // Create dots for navigation
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    cards.forEach((_, index) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (index === currentIndex) {
-        dot.classList.add('active');
+      // Set new animation with current speed and direction
+      const directionName = direction === 1 ? 'marquee' : 'marquee-reverse';
+      marqueeTrack.style.animation = `${directionName} ${speed}s linear infinite`;
+
+      // Update animation play state
+      marqueeTrack.style.animationPlayState = isPaused ? 'paused' : 'running';
+  }
+
+  // Add reverse keyframes dynamically
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = `
+      @keyframes marquee-reverse {
+          0% {
+              transform: translateX(-50%);
+          }
+          100% {
+              transform: translateX(0);
+          }
       }
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-      });
-      dotsContainer.appendChild(dot);
-    });
-  }
+  `;
+  document.head.appendChild(styleSheet);
 
-  // Update active dot
-  function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-      if (index === currentIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
-
-  // Go to specific slide
-  function goToSlide(index) {
-    if (isMobile) {
-      currentIndex = index;
-      const slideWidth = cards[0].offsetWidth;
-      benefitsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-      updateDots();
-    }
-  }
-
-  // Next slide
-  function nextSlide() {
-    if (isMobile) {
-      currentIndex = (currentIndex + 1) % cards.length;
-      goToSlide(currentIndex);
-    }
-  }
-
-  // Previous slide
-  function prevSlide() {
-    if (isMobile) {
-      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-      goToSlide(currentIndex);
-    }
-  }
-
-  // Handle touch events for mobile swipe
-  function handleTouchStart(e) {
-    if (isMobile) {
-      startX = e.touches[0].clientX;
-    }
-  }
-
-  function handleTouchMove(e) {
-    if (isMobile && startX) {
-      moveX = e.touches[0].clientX;
-      const diff = startX - moveX;
-
-      // Prevent default only when swiping horizontally
-      if (Math.abs(diff) > 5) {
-        e.preventDefault();
-      }
-    }
-  }
-
-  function handleTouchEnd() {
-    if (isMobile && startX && moveX) {
-      const diff = startX - moveX;
-      if (diff > 50) {
-        nextSlide();
-      } else if (diff < -50) {
-        prevSlide();
-      }
-
-      startX = null;
-      moveX = null;
-    }
-  }
-
-  // Initialize slider for mobile
-  function initSlider() {
-    isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-      createDots();
-      goToSlide(currentIndex);
-
-      // Add event listeners for buttons
-      prevBtn.addEventListener('click', prevSlide);
-      nextBtn.addEventListener('click', nextSlide);
-
-      // Add touch events for swiping
-      benefitsWrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
-      benefitsWrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
-      benefitsWrapper.addEventListener('touchend', handleTouchEnd);
-
-      // Auto slide every 5 seconds
-      setInterval(nextSlide, 5000);
-    } else {
-      // Reset transform for desktop view
-      benefitsWrapper.style.transform = 'translateX(0)';
-
-      // Remove event listeners for mobile
-      prevBtn.removeEventListener('click', prevSlide);
-      nextBtn.removeEventListener('click', nextSlide);
-      benefitsWrapper.removeEventListener('touchstart', handleTouchStart);
-      benefitsWrapper.removeEventListener('touchmove', handleTouchMove);
-      benefitsWrapper.removeEventListener('touchend', handleTouchEnd);
-    }
-  }
-
-  // Initialize on load
-  initSlider();
-
-  // Reinitialize on window resize
-  window.addEventListener('resize', function () {
-    initSlider();
+  // Event listeners for controls
+  pausePlayButton.addEventListener('click', function() {
+      isPaused = !isPaused;
+      marqueeTrack.style.animationPlayState = isPaused ? 'paused' : 'running';
+      pausePlayButton.textContent = isPaused ? 'Play' : 'Pause';
   });
+
+  slowerButton.addEventListener('click', function() {
+      speed = Math.min(speed * 1.5, 60); // Increase duration (slower)
+      updateAnimation();
+  });
+
+  fasterButton.addEventListener('click', function() {
+      speed = Math.max(speed * 0.7, 5); // Decrease duration (faster)
+      updateAnimation();
+  });
+
+  reverseButton.addEventListener('click', function() {
+      direction *= -1; // Toggle direction
+      updateAnimation();
+  });
+
+  // Pause on hover (in addition to CSS)
+  marqueeContainer.addEventListener('mouseenter', function() {
+      if (!isPaused) {
+          marqueeTrack.style.animationPlayState = 'paused';
+      }
+  });
+
+  marqueeContainer.addEventListener('mouseleave', function() {
+      if (!isPaused) {
+          marqueeTrack.style.animationPlayState = 'running';
+      }
+  });
+
+  // Handle visibility change (pause when tab is not visible)
+  document.addEventListener('visibilitychange', function() {
+      if (document.hidden && !isPaused) {
+          marqueeTrack.style.animationPlayState = 'paused';
+      } else if (!document.hidden && !isPaused) {
+          marqueeTrack.style.animationPlayState = 'running';
+      }
+  });
+
+  // Initialize animation
+  updateAnimation();
 });
 
 
