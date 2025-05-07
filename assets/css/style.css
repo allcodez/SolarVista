@@ -96,7 +96,7 @@ select {
 	transition: var(--transition-1);
 	z-index: 4;
 	background: white;
-	box-shadow: 1px 1px 20px 1px #0000001a;
+	box-shadow: 1px 1px 20px 1px #0000000f;
 }
 
 .container {
@@ -799,7 +799,7 @@ select {
 }
 
 @media (max-width: 768px) {
-	.how-button{
+	.how-button {
 		justify-content: center;
 	}
 }
@@ -1079,7 +1079,7 @@ select {
 .budget-plan-card {
 	background-color: var(--brand-light);
 	border-radius: 15px;
-	padding: 2rem;
+	padding: 1.5rem;
 	width: 100%;
 	max-width: 320px;
 	display: flex;
@@ -1770,6 +1770,185 @@ select {
 	object-fit: cover;
 }
 
+
+.team-section {
+	/* max-width: 1200px; */
+	/* margin: 50px auto; */
+	/* padding: 20px; */
+}
+
+.team-container * {
+	opacity: 1 !important;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 40px;
+	font-size: 2.5rem;
+	color: #2c3e50;
+}
+
+#name-card-1 {
+	opacity: 1 !important;
+}
+
+.team-container {
+	background: red;
+	display: flex;
+	/* flex-wrap: wrap; */
+	justify-content: center;
+	position: relative;
+}
+
+.card,
+.card-wrapper {
+	width: 100%;
+	height: 400px;
+	position: relative;
+}
+
+.card {
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: all 0.5s ease;
+}
+
+.name-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	/* padding: 20px; */
+}
+
+.name {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+.image-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card-wrapper {
+	position: relative;
+}
+
+.card-wrapper .name-card {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	background: red;
+
+}
+
+.card-wrapper .image-card {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	transition: transform 0.5s ease;
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* Animation classes - will be added/removed via JavaScript */
+.move-left {
+	transform: translateX(-100%);
+	z-index: 1;
+	/* Lower z-index when moved */
+}
+
+.show-name {
+	opacity: 1 !important;
+	visibility: visible;
+	/* z-index: 3 !important; */
+	/* Higher z-index to show above images */
+}
+
+/* Cloned name card for positioning */
+.name-clone {
+	position: absolute;
+	width: 200px;
+	height: 250px;
+	z-index: 3;
+	opacity: 1;
+	visibility: visible;
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+
+	.card,
+	.card-wrapper,
+	.name-clone {
+		width: 180px;
+		height: 225px;
+	}
+}
+
+@media (max-width: 992px) {
+
+	.card,
+	.card-wrapper,
+	.name-clone {
+		width: 160px;
+		height: 200px;
+	}
+
+	.name {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.card,
+	.card-wrapper,
+	.name-clone {
+		width: 140px;
+		height: 175px;
+	}
+}
+
+@media (max-width: 576px) {
+	.team-container {
+		justify-content: center;
+	}
+
+	.card,
+	.card-wrapper,
+	.name-clone {
+		width: 120px;
+		height: 150px;
+	}
+
+	.name {
+		font-size: 0.9rem;
+	}
+}
+
+
+
+
+
 .faq {
 	width: 100%;
 	padding: 2rem 1rem;
@@ -1875,13 +2054,13 @@ select {
 	line-height: 1.6;
 }
 
-.answer-container h1{
+.answer-container h1 {
 	display: none;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-	.answer-container h1{
+	.answer-container h1 {
 		display: block;
 		font-size: 1.5rem;
 	}
@@ -1891,7 +2070,7 @@ select {
 		opacity: 0.8;
 	}
 
-	.faq-heading{
+	.faq-heading {
 		display: none;
 	}
 
