@@ -497,6 +497,7 @@ select {
 
 
 .solar-benefits {
+	margin-top: 2rem;
 	margin-bottom: 2rem;
 }
 
@@ -1534,6 +1535,13 @@ select {
 	right: -4%;
 }
 
+@media (max-width: 1210px) {
+	.subscribe-content img.subscribe-plane {
+		right: -1%;
+	}
+
+}
+
 @media (max-width:991px) {
 	.subscribe-content img.subscribe-plane {
 		display: none;
@@ -1772,20 +1780,14 @@ select {
 
 
 .team-section {
-	/* max-width: 1200px; */
-	/* margin: 50px auto; */
-	/* padding: 20px; */
+	max-width: 1800px;
+	margin: 0 auto;
+	margin-top: -5rem;
+	background: var(--brand-color);
 }
 
 .team-container * {
 	opacity: 1 !important;
-}
-
-h1 {
-	text-align: center;
-	margin-bottom: 40px;
-	font-size: 2.5rem;
-	color: #2c3e50;
 }
 
 #name-card-1 {
@@ -1793,7 +1795,7 @@ h1 {
 }
 
 .team-container {
-	background: red;
+	background: var(--brand-color);
 	display: flex;
 	/* flex-wrap: wrap; */
 	justify-content: center;
@@ -1808,24 +1810,41 @@ h1 {
 }
 
 .card {
-	background-color: white;
+	background-color: var(--brand-color);
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	transition: all 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+
+
+.card b {
+	/* all: unset; */
+	font-family: var(--b-font);
+	font-weight: 500;
 }
 
 .name-card {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	/* padding: 20px; */
+	padding: 10px;
+}
+
+#name-card-1 p,
+#name-card-1 b {
+	margin-left: 10px;
+}
+
+#name-card-1 p {
+	margin-bottom: 10px;
+
 }
 
 .name {
 	font-size: 1.2rem;
 	font-weight: bold;
-	color: #2c3e50;
+	max-width: 150px;
 }
 
 .image-card img {
@@ -1845,7 +1864,11 @@ h1 {
 	z-index: 1;
 	opacity: 0;
 	transition: opacity 0.3s ease;
-	background: red;
+	background: var(--brand-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
 
 }
 
@@ -1918,30 +1941,98 @@ h1 {
 	}
 }
 
-@media (max-width: 768px) {
-
-	.card,
-	.card-wrapper,
-	.name-clone {
-		width: 140px;
-		height: 175px;
+@media (max-width: 1200px) {
+	.team-container {
+		display: none;
 	}
 }
 
-@media (max-width: 576px) {
-	.team-container {
-		justify-content: center;
+/* ======================================================================================================================================= */
+
+.sm-team-container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	/* gap: 2rem; */
+	justify-content: space-between;
+}
+
+/* sm-Team member card */
+.sm-team-member {
+	background-color: var(--brand-color);
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	/* width: calc(20% - 20px); */
+	width: 45%;
+}
+
+.sm-team-info {
+	padding: 15px;
+}
+
+.sm-team-name {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.sm-team-title {
+	font-size: 14px;
+	color: #333;
+}
+
+.sm-team-photo {
+	width: 100%;
+	height: 250px;
+	background-color: #222;
+}
+
+/* Mobile view (default) */
+@media (max-width: 768px) {
+	.sm-team-member {
+		width: 100%;
+	}
+}
+
+/* Desktop view */
+@media (min-width: 1200px) {
+	.sm-team-container {
+		display: none;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 40px 20px;
 	}
 
-	.card,
-	.card-wrapper,
-	.name-clone {
-		width: 120px;
-		height: 150px;
+	.sm-team-member {
+		width: calc(33.33% - 20px);
+		margin-bottom: 30px;
+		transition: transform 0.3s ease;
 	}
 
-	.name {
-		font-size: 0.9rem;
+	.sm-team-member:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.sm-team-info {
+		padding: 20px;
+	}
+
+	.sm-team-name {
+		font-size: 20px;
+	}
+
+	.sm-team-title {
+		font-size: 16px;
+	}
+
+	.sm-team-photo {
+		height: 300px;
 	}
 }
 
