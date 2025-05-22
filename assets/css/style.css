@@ -1,8 +1,8 @@
 @font-face {
 	font-family: ClashDisplay-Regular;
-	src: url('../assets/fonts/ClashDisplay-Regular.woff2') format('woff2'),
-		url('../assets/fonts/ClashDisplay-Regular.woff') format('woff'),
-		url('../assets/fonts/ClashDisplay-Regular.ttf') format('truetype');
+	src: url('../fonts/ClashDisplay/ClashDisplay-Regular.woff2') format('woff2'),
+		url('../fonts/ClashDisplay/ClashDisplay-Regular.woff') format('woff'),
+		url('../fonts/ClashDisplay/ClashDisplay-Regular.ttf') format('truetype');
 	font-weight: 400;
 	font-display: swap;
 	font-style: normal;
@@ -10,9 +10,9 @@
 
 @font-face {
 	font-family: ClashDisplay-Medium;
-	src: url('../assets/fonts/ClashDisplay-Medium.woff2') format('woff2'),
-		url('../assets/fonts/ClashDisplay-Medium.woff') format('woff'),
-		url('../assets/fonts/ClashDisplay-Medium.ttf') format('truetype');
+	src: url('../fonts/ClashDisplay/ClashDisplay-Medium.woff2') format('woff2'),
+		url('../fonts/ClashDisplay/ClashDisplay-Medium.woff') format('woff'),
+		url('../fonts/ClashDisplay/ClashDisplay-Medium.ttf') format('truetype');
 	font-weight: 500;
 	font-display: swap;
 	font-style: normal;
@@ -20,9 +20,9 @@
 
 @font-face {
 	font-family: ClashDisplay-Semibold;
-	src: url('../assets/fonts/ClashDisplay-Semibold.woff2') format('woff2'),
-		url('../assets/fonts/ClashDisplay-Semibold.woff') format('woff'),
-		url('../assets/fonts/ClashDisplay-Semibold.ttf') format('truetype');
+	src: url('../fonts/ClashDisplay/ClashDisplay-Semibold.woff2') format('woff2'),
+		url('../fonts/ClashDisplay/ClashDisplay-Semibold.woff') format('woff'),
+		url('../fonts/ClashDisplay/ClashDisplay-Semibold.ttf') format('truetype');
 	font-weight: 600;
 	font-display: swap;
 	font-style: normal;
@@ -30,14 +30,13 @@
 
 @font-face {
 	font-family: ClashDisplay-Bold;
-	src: url('../assets/fonts/ClashDisplay-Bold.woff2') format('woff2'),
-		url('../assets/fonts/ClashDisplay-Bold.woff') format('woff'),
-		url('../assets/fonts/ClashDisplay-Bold.ttf') format('truetype');
+	src: url('../fonts/ClashDisplay/ClashDisplay-Bold.woff2') format('woff2'),
+		url('../fonts/ClashDisplay/ClashDisplay-Bold.woff') format('woff'),
+		url('../fonts/ClashDisplay/ClashDisplay-Bold.ttf') format('truetype');
 	font-weight: 700;
 	font-display: swap;
 	font-style: normal;
 }
-
 
 :root {
 
