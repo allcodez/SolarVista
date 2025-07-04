@@ -82,17 +82,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-  // Close mobile menu when a navbar link is clicked (on mobile)
-  const navLinks = document.querySelectorAll('.navbar-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (isMobile()) {
-        navbar.classList.remove('active');
-        navToggleBtn.classList.remove('active');
-        body.classList.remove('active');
-      }
-    });
+  // Close mobile navbar when any navbar link is clicked
+const navLinks = document.querySelectorAll('.navbar-link');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (isMobile()) {
+      const navToggleBtn = document.querySelector('[data-nav-toggle-btn]');
+      const navbar = document.querySelector('[data-navbar]');
+      const body = document.body;
+
+      navToggleBtn.classList.remove('active');
+      navbar.classList.remove('active');
+      body.classList.remove('active');
+    }
   });
+});
 
 document.addEventListener('DOMContentLoaded', function () {
   const marqueeTrack = document.getElementById('marquee-track');
