@@ -1281,7 +1281,6 @@ select {
 	}
 }
 
-/* Animation for the continuous movement */
 @keyframes marquee {
 	0% {
 		transform: translateX(0);
@@ -1289,7 +1288,6 @@ select {
 
 	100% {
 		transform: translateX(-50%);
-		/* Move by half the width (since we duplicate the items) */
 	}
 }
 
@@ -1444,7 +1442,6 @@ select {
 	.contact-info img {
 		display: unset;
 	}
-
 }
 
 @media (max-width: 540px) {
