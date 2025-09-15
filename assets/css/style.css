@@ -1293,7 +1293,6 @@ select {
 	}
 }
 
-/* Controls for speed adjustment */
 .controls {
 	margin-top: 20px;
 	display: flex;
@@ -1306,9 +1305,6 @@ select {
 	align-items: center;
 	gap: 10px;
 }
-
-
-
 
 .card-section {
 	position: relative;
@@ -1364,8 +1360,6 @@ select {
 	pointer-events: none;
 	visibility: hidden;
 }
-
-
 
 .contact {
 	width: 100%;
@@ -1541,7 +1535,6 @@ select {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* align-self: flex-start; */
 }
 
 .subscribe-form a img {
